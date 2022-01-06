@@ -203,8 +203,7 @@ def d_color(path, name):
 
 
 def get_map():
-    data = pd.read_csv(path)
-
+    pass
 
 if __name__ == '__main__':
     usef()

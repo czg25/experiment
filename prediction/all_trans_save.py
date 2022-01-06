@@ -145,9 +145,9 @@ def save_end_append(csv_path, data):
 
 if __name__ == '__main__':
     # all_start_matrix()
-    # revise_data()
-    # all_translation_matrix()
     # all_emission_matrix()
+    # revise_data()
+    all_translation_matrix()
     # row_sum_test()
     # save_end_append(r"D:\experiment\result\obs_result\5000_20.csv", [213.2131, 131.12312, 5.2123123, 6.3424])
-    pass
+

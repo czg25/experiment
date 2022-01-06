@@ -14,7 +14,7 @@ from areas import statistics_all_car as sac
     预测所有的测试集，并保存
 """
 
-divide_parm = 3000
+divide_parm = 1000
 
 
 # def random_predict(csv_name: str) -> int:
@@ -87,8 +87,9 @@ def get_three_matrix(csv_name):
 
 
 def predict_all_cars(seq_length):
-    csv_files = all_csv_file()
+    # csv_files = all_csv_file()
     # csv_files = ["00028.csv"]  # test
+    csv_files = del_trans()
     obs_path = os.path.join(r"D:\experiment\obs", "obs_" + str(divide_parm))
     for csv_name in csv_files:
         sum_count = 0
@@ -236,13 +237,21 @@ def test2():
     print(sets)
 
 
+def del_trans():
+    """
+        删除已经训练的车辆名子
+    """
+    list1 = os.listdir(r"D:\experiment\matrix_20_1000\emission")
+    list2 = np.array(pd.read_csv(r"D:\experiment\result\obs_result\1000_30.csv", usecols=[0]))
+    return np.setdiff1d(np.array(list1),list2.flatten())
+
+
 if __name__ == '__main__':
     # get_all(5000)
     # get_all(3000)
+    # get_all(1000)
+    # *************观测状态的训练⬆***************g
     # test()
     # predict_all_cars(10)
     predict_all_cars(30)
     # print(exchange(337))
-    # '00028.csv'
-    # index 678 is out of bounds for axis 1 with size 675
-    # print(csv_files)

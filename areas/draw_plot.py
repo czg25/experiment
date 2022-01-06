@@ -1,26 +1,29 @@
 import random
 from matplotlib import colors
-import matplotlib as mpl
-import matplotlib.pyplot as plt
-from areas import compute_areas as ca
-from areas import prams_process as prams
-import numpy as np
 
-from myCLIQUE import clique_me as my_clique
+import matplotlib.pyplot as plt
+
+import numpy as np
+import pandas as pd
 
 
 def draw_map(data):
     # data = [[1, 0, 1], [0, 3, 0], [0, 0, 0]]
     length = len(data)
     width = len(data[0])
+    print("长：", length)
+    print("宽：", width)
     # 获取data中的最大值
     max_value = max(map(max, data))
-    fig = plt.figure(figsize=(10, 10))
-    ax = fig.add_axes([0, 0, 1, 1])
-    ax.imshow(data, extent=[0, length, 0, width], interpolation="none", origin="lower", vmin=0.5,
-              cmap=colormap(max_value))  # origin="lower":默认自底向上画
-    # ax.grid(linewidth=0.25, color="black")
+    fig = plt.figure(figsize=(4.5, 4))
+    ax = fig.add_axes([0.14, 0.05, 0.8, 1])
+    ax.set_xlabel('longitude')
+    ax.set_ylabel('latitude')
 
+    ax.imshow(data, extent=[120.852326, 122.118227, 30.691701, 31.87463], interpolation="none", origin="lower",
+              vmin=0.5,
+              cmap=colormap(max_value))  # origin="lower":默认自底向上画
+    # ax.grid(linewidth=1, color="black")
     plt.show()
 
 
@@ -112,3 +115,12 @@ def colormap(max_value):
             break
 
     return colors.ListedColormap(cdict, 'indexed')
+
+
+if __name__ == '__main__':
+    # draw_map(da)
+    path = r"D:\experiment\result\new_some_cluster\res_1000.csv"
+    data = np.flipud(np.array(pd.read_csv(path, header=None)))
+    print("簇长度：", data.max())
+    print(data.shape)
+    draw_map(data)

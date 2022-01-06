@@ -54,11 +54,11 @@ def cycle_div():
         使用clique算法 循环分割区域，threshold逐渐增大，由内向外
         在绘制图时，所有没保存到磁盘的数据都是自顶向下的顺序排列
         读取磁盘的数据，需要进行翻转，内存中的数据不需要
-        只有聚类数据需要翻转
+        只有聚类数据文件需要翻转
     :return:
     """
-    path1 = r"D:\experiment\result\new_some\res_1000.csv"
-    # path1 = r"D:\experiment\result\res_10000.csv"
+    # path1 = r"D:\experiment\result\new_some\res_1000.csv"
+    path1 = r"D:\experiment\result\res_10000.csv"
 
     # -------data acquire---------
     max_threshold = 1000
